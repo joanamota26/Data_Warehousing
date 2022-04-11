@@ -13,12 +13,12 @@ INSERT INTO localCliente
 		(idLocalCliente, pais, cidade)
         VALUES
 				(1, 'Portugal', 'Porto'),
-                (2, 'Espanha', 'Madrid'),
-                (3, 'França', 'Paris'),
-                (4, 'Bélgica', 'Bruxelas'),
-                (5, 'Holanda', 'Amesterdao'),
-                (6, 'Itália', 'Roma'), 
-                (7, 'Portugal', 'Braga'),
+				(2, 'Espanha', 'Madrid'),
+				(3, 'França', 'Paris'),
+				(4, 'Bélgica', 'Bruxelas'),
+				(5, 'Holanda', 'Amesterdao'),
+				(6, 'Itália', 'Roma'), 
+				(7, 'Portugal', 'Braga'),
                 (8, 'Alemanha', 'Berlim'),
                 (9, 'Reino Unido', 'Londres'),
                 (10, 'Portugal', 'Coimbra'),
@@ -34,8 +34,7 @@ INSERT INTO localCliente
                 (20, 'Portugal', 'Bragança'),
                 (21, 'Suiça', 'Zurique'),
                 (22, 'Portugal', 'Vila Real'),
-                (23, 'Portugal', 'Setúbal')
-            ;
+                (23, 'Portugal', 'Setúbal');
             
 -- Povoamento da tabela Cliente
 INSERT INTO cliente
@@ -66,8 +65,7 @@ INSERT INTO cliente
                 (23, 'Rui Peixoto', 'peixe1996@hotmail.com', 967811523, 'Engenheiro quimico', 22),
                 (24, 'Erika Gonzalez', 'Erika_G@zoho.com', 838960730, 'Enfermeira', 19),
                 (25, 'Zulmira Campos', 'zinha_06@gmail.com', 967843223, 'Veterinária', 18),
-                (26, 'Inês Machado', 'maria03@hotmail.com',  919191919, 'Dentista', 23)
-			;
+                (26, 'Inês Machado', 'maria03@hotmail.com',  919191919, 'Dentista', 23);
         
 -- Povoamento da tabela tipoEstadia 
 INSERT INTO tipoEstadia
@@ -75,8 +73,7 @@ INSERT INTO tipoEstadia
         VALUES
 				(1, 'lazer'),
                 (2, 'negócio'),
-                (3, 'passagem')
-			;
+                (3, 'passagem');
 
 -- Povoamento da tabela Quarto
 INSERT INTO quarto
@@ -85,8 +82,7 @@ INSERT INTO quarto
 				(1, 'quarto individual', 30.00),
                 (2, 'quarto duplo', 55.00),
                 (3, 'quarto triplo', 65.00),
-                (4, 'quarto suite', 80.00)
-			;
+                (4, 'quarto suite', 80.00);
   
 -- Povoamento da tabela Servico
 INSERT INTO servico
@@ -99,8 +95,7 @@ INSERT INTO servico
                 (5, 'acesso sauna', 20.00),
                 (6, 'acesso jacuzzi', 25.00),
                 (7, 'acesso ginasio', 15.00),
-                (8, 'acesso piscina interior', 15.00)
-		; 
+                (8, 'acesso piscina interior', 15.00); 
                 
 -- Povoamento da tabela reserva
 INSERT INTO reserva
@@ -150,8 +145,7 @@ INSERT INTO reserva
                 (42, '2017-03-19', '2017-03-20', '2017-03-21', 1, 1, 0, 0, 40.00, 17, 2), -- cliente17
                 (43, '2017-04-11', '2017-05-26', '2017-05-28', 2, 2, 0, 0, 85.00, 7, 2), -- cliente7 - 2x no mesmo ano, uma em negocios e outro em lazer
                 (44, '2017-05-15', '2017-06-19', '2017-06-22', 3, 2, 0, 0, 220.00, 5, 1), -- cliente5, 2x no mesmo ano
-                (45, '2017-06-11', '2017-08-18', '2017-08-22', 4, 2, 0, 1, 295.00, 16, 1) -- cliente16
-		;
+                (45, '2017-06-11', '2017-08-18', '2017-08-22', 4, 2, 0, 1, 295.00, 16, 1); -- cliente16
 
 -- Povoamento da tabela ponte reservaQuarto
 INSERT INTO ReservaQuarto
@@ -203,8 +197,7 @@ INSERT INTO ReservaQuarto
                 (42, 1, 30.00, 1),
                 (43, 2, 55.00, 1),
                 (44, 2, 55.00, 1),
-                (45, 4, 80.00, 1)
-			;
+                (45, 4, 80.00, 1);
             
 -- Povoamento da tabela ponte reservaServico
 INSERT INTO ReservaServico
@@ -298,6 +291,4 @@ INSERT INTO ReservaServico
                 (44, 5, 20.00),
                 (44, 6, 25.00),
                 (45, 3, 50.00),
-                (45, 6, 25.00)
-			;
-   
+                (45, 6, 25.00);
