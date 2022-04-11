@@ -13,19 +13,19 @@ INSERT INTO localCliente
 		(idLocalCliente, pais, cidade)
         VALUES
 				(1, 'Portugal', 'Porto'),
-				(2, 'Espanha', 'Madrid'),
-				(3, 'França', 'Paris'),
-				(4, 'Bélgica', 'Bruxelas'),
-				(5, 'Holanda', 'Amesterdao'),
-				(6, 'Itália', 'Roma'), 
-				(7, 'Portugal', 'Braga'),
+                (2, 'Espanha', 'Madrid'),
+                (3, 'França', 'Paris'),
+                (4, 'Bélgica', 'Bruxelas'),
+                (5, 'Holanda', 'Amesterdao'),
+                (6, 'Itália', 'Roma'), 
+                (7, 'Portugal', 'Braga'),
                 (8, 'Alemanha', 'Berlim'),
                 (9, 'Reino Unido', 'Londres'),
                 (10, 'Portugal', 'Coimbra'),
                 (11, 'Reino Unido', 'Manchester'),
                 (12, 'Portugal', 'Viseu'),
                 (13, 'Portugal', 'Viana do Castelo'),
-				(14, 'Portugal', 'Vila Nova De Gaia'),
+                (14, 'Portugal', 'Vila Nova De Gaia'),
                 (15, 'Áustria', 'Viena'),
                 (16, 'Portugal', 'Évora'),
                 (17, 'Portugal', 'Lisboa'),
@@ -41,7 +41,7 @@ INSERT INTO cliente
 		(idCliente, nome, email, contacto, profissao, idLocalCliente)
         VALUES
 				(1, 'Vítor Campos', 'vitoPT@gmail.com', 921231234, 'Economista', 1),
-				(2, 'Penelope Cruz', 'penelope_cruz@yahoo.com', 79007635, 'Gestora', 2), 
+                (2, 'Penelope Cruz', 'penelope_cruz@yahoo.com', 79007635, 'Gestora', 2), 
                 (3, 'Catherine Laurent', 'catherine123@gmail.com', 54912558, 'Designer', 3),
                 (4, 'Sarah Wagner', 'wagner.Sarah@yandex.com', 255-727-3402, 'Esteticista', 4),
                 (5, 'Leonor Castro', 'lele53@hotmail.com', 960121564, 'Engenheira de Sistemas', 7),
@@ -104,7 +104,7 @@ INSERT INTO reserva
 				(1, '2016-04-03', '2016-04-15', '2015-04-17', 2, 2, 0, 0, 160.00, 3, 1), -- cliente3 
                 (2, '2016-01-05', '2016-08-06', '2015-08-12', 6, 2, 1, 1, 970.00, 7, 1), -- cliente7 
                 (3, '2016-01-31', '2016-02-06', '2016-02-07', 1, 2, 0, 0, 65.00, 5, 1), -- cliente5 
-				(4, '2016-01-20', '2016-06-11', '2015-06-16', 4, 2, 0, 1, 410.00, 18, 1), -- cliente18 
+                (4, '2016-01-20', '2016-06-11', '2015-06-16', 4, 2, 0, 1, 410.00, 18, 1), -- cliente18 
                 (5, '2016-04-17', '2016-04-18', '2016-04-19', 1, 1, 0, 0, 40.00, 6, 3), -- cliente6 
                 (6, '2016-01-01', '2016-01-01', '2016-01-03', 2, 2, 0, 0, 135.00, 2, 1), -- cliente2 
                 (7, '2016-05-01', '2016-05-10', '2016-05-11', 1, 2, 0, 0, 155.00, 16, 2), -- cliente16 
@@ -140,7 +140,7 @@ INSERT INTO reserva
                 (37, '2017-06-01', '2017-08-15', '2017-08-18', 3, 2, 0, 1, 270.00, 14, 1), -- cliente 14
                 (38, '2017-03-20', '2017-07-14', '2017-07-16', 2, 4, 0, 0, 255.00, 3, 1), -- cliente3
                 (39, '2017-04-01', '2017-04-21', '2017-04-23', 2, 2, 0, 0, 180.00, 5, 1), -- cliente5
-				(40, '2017-04-16', '2017-08-29', '2017-08-31', 2, 2, 1, 0, 155.00, 8, 1), -- cliente8
+                (40, '2017-04-16', '2017-08-29', '2017-08-31', 2, 2, 1, 0, 155.00, 8, 1), -- cliente8
                 (41, '2017-12-01', '2017-12-09', '2017-12-10', 1, 2, 0, 0, 125.00, 21, 1), -- cliente21
                 (42, '2017-03-19', '2017-03-20', '2017-03-21', 1, 1, 0, 0, 40.00, 17, 2), -- cliente17
                 (43, '2017-04-11', '2017-05-26', '2017-05-28', 2, 2, 0, 0, 85.00, 7, 2), -- cliente7 - 2x no mesmo ano, uma em negocios e outro em lazer
