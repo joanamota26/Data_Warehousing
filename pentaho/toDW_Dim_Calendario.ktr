@@ -430,7 +430,7 @@
     <created_date>2022/05/25 09:35:35.573</created_date>
     <modified_user>-</modified_user>
     <modified_date>2022/05/25 09:35:35.573</modified_date>
-    <key_for_session_key/>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -564,7 +564,7 @@
   <order>
     <hop>
       <from>AR calendario</from>
-      <to>Output Dim_Calendario</to>
+      <to>Insert / update Data</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -766,8 +766,8 @@ FROM ar_calendario;</sql>
     </GUI>
   </step>
   <step>
-    <name>Output Dim_Calendario</name>
-    <type>TableOutput</type>
+    <name>Insert / update Data</name>
+    <type>InsertUpdate</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -777,52 +777,89 @@ FROM ar_calendario;</sql>
       <schema_name/>
     </partitioning>
     <connection>toDW_dimensao</connection>
-    <schema>dw_hotel_reservas</schema>
-    <table>dim_data</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>N</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>idData</column_name>
-        <stream_name>idData</stream_name>
-      </field>
-      <field>
-        <column_name>diaSemana</column_name>
-        <stream_name>diaSemana</stream_name>
-      </field>
-      <field>
-        <column_name>diaData</column_name>
-        <stream_name>diaData</stream_name>
-      </field>
-      <field>
-        <column_name>mesData</column_name>
-        <stream_name>mesData</stream_name>
-      </field>
-      <field>
-        <column_name>mesAno</column_name>
-        <stream_name>mesAno</stream_name>
-      </field>
-      <field>
-        <column_name>anoData</column_name>
-        <stream_name>anoData</stream_name>
-      </field>
-      <field>
-        <column_name>data</column_name>
-        <stream_name>data</stream_name>
-      </field>
-    </fields>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>dw_hotel_reservas</schema>
+      <table>dim_data</table>
+      <key>
+        <name>idData</name>
+        <field>idData</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>diaSemana</name>
+        <field>diaSemana</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>diaData</name>
+        <field>diaData</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>mesData</name>
+        <field>mesData</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>mesAno</name>
+        <field>mesAno</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>anoData</name>
+        <field>anoData</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>data</name>
+        <field>data</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>idData</name>
+        <rename>idData</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>diaSemana</name>
+        <rename>diaSemana</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>diaData</name>
+        <rename>diaData</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>mesData</name>
+        <rename>mesData</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>mesAno</name>
+        <rename>mesAno</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>anoData</name>
+        <rename>anoData</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>data</name>
+        <rename>data</rename>
+        <update>N</update>
+      </value>
+    </lookup>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -832,7 +869,7 @@ FROM ar_calendario;</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
+      <xloc>576</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>

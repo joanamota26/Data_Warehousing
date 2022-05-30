@@ -501,7 +501,7 @@
   <order>
     <hop>
       <from>AR hotel</from>
-      <to>Output Dim_Hotel</to>
+      <to>Insert / update Dim Hotel</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -605,13 +605,13 @@
     </remotesteps>
     <GUI>
       <xloc>224</xloc>
-      <yloc>128</yloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Output Dim_Hotel</name>
-    <type>TableOutput</type>
+    <name>Insert / update Dim Hotel</name>
+    <type>InsertUpdate</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -621,36 +621,45 @@
       <schema_name/>
     </partitioning>
     <connection>toDW_DimHotel</connection>
-    <schema>dw_hotel_reservas</schema>
-    <table>dim_hotel</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>idHotel</column_name>
-        <stream_name>idHotel</stream_name>
-      </field>
-      <field>
-        <column_name>nome</column_name>
-        <stream_name>nome</stream_name>
-      </field>
-      <field>
-        <column_name>localidade</column_name>
-        <stream_name>localidade</stream_name>
-      </field>
-    </fields>
+    <commit>100</commit>
+    <update_bypassed>Y</update_bypassed>
+    <lookup>
+      <schema>dw_hotel_reservas</schema>
+      <table>dim_hotel</table>
+      <key>
+        <name>idHotel</name>
+        <field>idHotel</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>nome</name>
+        <field>nome</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>localidade</name>
+        <field>localidade</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>idHotel</name>
+        <rename>idHotel</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>nome</name>
+        <rename>nome</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>localidade</name>
+        <rename>localidade</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -660,8 +669,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>416</xloc>
-      <yloc>128</yloc>
+      <xloc>496</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

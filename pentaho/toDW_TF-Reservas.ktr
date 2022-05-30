@@ -564,12 +564,12 @@
   <order>
     <hop>
       <from>AR reservas MySQL</from>
-      <to>Output TF_reservas</to>
+      <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>AR reservas Excel</from>
-      <to>Output TF_reservas</to>
+      <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -587,7 +587,7 @@
     <connection>ArReserv</connection>
     <sql>SELECT idReserva, valor, nrNoites, CAST(date_format(dataCheckin, '%Y%m%d') AS unsigned) AS dim_iddata, res.nif AS dim_nif, sk_cliente AS dim_sk_cliente, idHotel AS dim_idhotel
 FROM ar_reserva_excel res
-LEFT JOIN ar_limpeza_cliente cli ON res.nif = cli.nif
+LEFT JOIN ar_historico_cliente cli ON res.nif = cli.nif
 AND res.datacheckin >= cli.valid_from AND res.datacheckin &lt; cli.valid_to
 order by idReserva;</sql>
     <limit>0</limit>
@@ -787,7 +787,7 @@ order by idReserva;</sql>
     <connection>ArReserv</connection>
     <sql>SELECT idReserva, valor, nrNoites, CAST(date_format(dataCheckin, '%Y%m%d') AS unsigned) AS dim_iddata, res.nif AS dim_nif, sk_cliente AS dim_sk_cliente, idHotel AS dim_idhotel
 FROM ar_reserva_mysql res
-LEFT JOIN ar_limpeza_cliente cli ON res.nif = cli.nif
+LEFT JOIN ar_historico_cliente cli ON res.nif = cli.nif
 AND res.datacheckin >= cli.valid_from AND res.datacheckin &lt; cli.valid_to
 order by idReserva;</sql>
     <limit>0</limit>
@@ -974,7 +974,7 @@ order by idReserva;</sql>
     </GUI>
   </step>
   <step>
-    <name>Output TF_reservas</name>
+    <name>Table output</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -1036,8 +1036,8 @@ order by idReserva;</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
-      <yloc>192</yloc>
+      <xloc>544</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

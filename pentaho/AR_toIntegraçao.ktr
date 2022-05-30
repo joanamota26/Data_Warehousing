@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>AR_toLimpezaCliente</name>
+    <name>AR_toIntegraçao</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -502,27 +502,22 @@
   <order>
     <hop>
       <from>AR Clientes MySQL</from>
-      <to>ordenar por nif, cidade, tipoEstadia, nrBebes, nrCriancas, nrAdultos, valid_from</to>
+      <to>ordenar por nif, valid_from</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>ordenar por nif, valid_from</from>
+      <to>Unique rows</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>AR Clientes Excel</from>
-      <to>ordenar por nif, cidade, tipoEstadia, nrBebes, nrCriancas, nrAdultos, valid_from 2</to>
+      <to>ordenar por nif, valid_from</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Unique rows</from>
-      <to>AR Limpeza Cliente</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>ordenar por nif, cidade, tipoEstadia, nrBebes, nrCriancas, nrAdultos, valid_from 2</from>
-      <to>Unique rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>ordenar por nif, cidade, tipoEstadia, nrBebes, nrCriancas, nrAdultos, valid_from</from>
-      <to>Unique rows</to>
+      <to>Output Integraçao Cliente</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -773,8 +768,8 @@ FROM AR_cliente_excel;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
-      <yloc>304</yloc>
+      <xloc>112</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1026,14 +1021,14 @@ FROM AR_cliente_mysql;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
-      <yloc>144</yloc>
+      <xloc>112</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>AR Limpeza Cliente</name>
-    <type>DimensionLookup</type>
+    <name>Output Integraçao Cliente</name>
+    <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1042,73 +1037,61 @@ FROM AR_cliente_mysql;
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <schema>arearetencao</schema>
-    <table>ar_limpeza_cliente</table>
     <connection>areaRetencao</connection>
-    <commit>100</commit>
-    <update>Y</update>
+    <schema>arearetencao</schema>
+    <table>ar_integracao_cliente</table>
+    <commit>1000</commit>
+    <truncate>Y</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
     <fields>
-      <key>
-        <name>nif</name>
-        <lookup>nif</lookup>
-      </key>
-      <date>
-        <name/>
-        <from>valid_from</from>
-        <to>valid_to</to>
-      </date>
       <field>
-        <name>nome</name>
-        <lookup>nome</lookup>
-        <update>Insert</update>
+        <column_name>nif</column_name>
+        <stream_name>nif</stream_name>
       </field>
       <field>
-        <name>cidade</name>
-        <lookup>cidade</lookup>
-        <update>Insert</update>
+        <column_name>nome</column_name>
+        <stream_name>nome</stream_name>
       </field>
       <field>
-        <name>pais</name>
-        <lookup>pais</lookup>
-        <update>Insert</update>
+        <column_name>cidade</column_name>
+        <stream_name>cidade</stream_name>
       </field>
       <field>
-        <name>tipoEstadia</name>
-        <lookup>tipoEstadia</lookup>
-        <update>Insert</update>
+        <column_name>pais</column_name>
+        <stream_name>pais</stream_name>
       </field>
       <field>
-        <name>nrbebes</name>
-        <lookup>nrbebes</lookup>
-        <update>Insert</update>
+        <column_name>tipoEstadia</column_name>
+        <stream_name>tipoEstadia</stream_name>
       </field>
       <field>
-        <name>nrCriancas</name>
-        <lookup>nrCriancas</lookup>
-        <update>Insert</update>
+        <column_name>nrBebes</column_name>
+        <stream_name>nrBebes</stream_name>
       </field>
       <field>
-        <name>nrAdultos</name>
-        <lookup>nrAdultos</lookup>
-        <update>Insert</update>
+        <column_name>nrCriancas</column_name>
+        <stream_name>nrCriancas</stream_name>
       </field>
-      <return>
-        <name>sk_cliente</name>
-        <rename/>
-        <creation_method>tablemax</creation_method>
-        <use_autoinc>N</use_autoinc>
-        <version>update</version>
-      </return>
+      <field>
+        <column_name>nradultos</column_name>
+        <stream_name>nradultos</stream_name>
+      </field>
+      <field>
+        <column_name>valid_from</column_name>
+        <stream_name>valid_from</stream_name>
+      </field>
     </fields>
-    <sequence/>
-    <min_year>2016</min_year>
-    <max_year>2199</max_year>
-    <cache_size>-1</cache_size>
-    <preload_cache>N</preload_cache>
-    <use_start_date_alternative>Y</use_start_date_alternative>
-    <start_date_alternative>column_value</start_date_alternative>
-    <start_date_field_name>valid_from</start_date_field_name>
-    <useBatch>N</useBatch>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -1118,8 +1101,8 @@ FROM AR_cliente_mysql;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>640</xloc>
-      <yloc>256</yloc>
+      <xloc>848</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1169,13 +1152,13 @@ FROM AR_cliente_mysql;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
-      <yloc>256</yloc>
+      <xloc>624</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>ordenar por nif, cidade, tipoEstadia, nrBebes, nrCriancas, nrAdultos, valid_from</name>
+    <name>ordenar por nif, valid_from</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -1202,30 +1185,6 @@ FROM AR_cliente_mysql;
         <presorted>N</presorted>
       </field>
       <field>
-        <name>nrbebes</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>nrCriancas</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>nrAdultos</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
         <name>valid_from</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
@@ -1243,82 +1202,8 @@ FROM AR_cliente_mysql;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>ordenar por nif, cidade, tipoEstadia, nrBebes, nrCriancas, nrAdultos, valid_from 2</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>nif</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>nrbebes</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>nrCriancas</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>nrAdultos</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>valid_from</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>368</xloc>
-      <yloc>304</yloc>
+      <xloc>400</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
